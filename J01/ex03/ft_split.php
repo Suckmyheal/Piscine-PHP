@@ -5,12 +5,14 @@ function ft_split($p1)
 {
 	$p2 = explode(" ", $p1);
 	$i = 0;
+	$p3 = array();
 	foreach ($p2 as $value) {
-		if ($value == NULL) {
-			unset($p2[$i]);
+		if ($value != NULL) {
+			$p3[$i] 1= $value;
+			$i++;
 		}
-		$i++;
 	}
-	return ($p2);
+	sort($p3);
+	return ($p3);
 }
 ?>

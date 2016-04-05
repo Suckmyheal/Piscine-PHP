@@ -1,25 +1,33 @@
 #!/usr/bin/php
-<?PHP
+<?php
 
-function ft_split($p1)
-{
-	$p2 = explode(" ", $p1);
-	$i = 0;
-	foreach ($p2 as $value) {
-		if ($value == NULL) {
-			unset($p2[$i]);
-		}
-		$i++;
-	}
-	return ($p2);
+$str = implode(" ", $argv);
+$str = explode(" ", $str);
+unset($str[0]);
+$alpha = array();
+$isnum = array();
+$special = array();
+foreach ($str as $my_str) {
+	if (ctype_alpha($my_str))
+		$alpha[] = $my_str;
+	else if (is_numeric($my_str))
+		$isnum[] = $my_str;
+	else
+		$special[] = $my_str;
 }
-
-print_r($argv);
-unset($argv[0]);
-print_r($argv);
-$var = implode(" ", $argv);
-$var = ft_split($var);
-foreach ($var as $value)
-	print($value."\n");
-
+if ($alpha)
+	natcasesort($alpha);
+if ($isnum)
+	sort($isnum, SORT_STRING);
+if ($special)
+	natcasesort($special);
+foreach ($alpha as $value) {
+	echo "$value\n";
+}
+foreach ($isnum as $value) {
+	echo "$value\n";
+}
+foreach ($special as $value) {
+	echo "$value\n";
+}
 ?>
